@@ -14,6 +14,10 @@ import { PastTrainingComponent } from './training/past-training/past-training.co
 
 import {FlexLayoutModule} from '@angular/flex-layout';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 // Material
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -81,7 +85,9 @@ import { MatSortModule, MatPaginatorModule } from '@angular/material';
     ReactiveFormsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [AuthService,TrainingSevice],
   bootstrap: [AppComponent],
