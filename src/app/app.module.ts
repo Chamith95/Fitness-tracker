@@ -33,8 +33,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+
+
 import { StopTrainingComponent } from './training/current-training/stop-training.component';
 import { AuthService } from './auth/auth.service';
+import { TrainingSevice } from './training/training.service';
+import { MatSortModule, MatPaginatorModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -73,9 +78,12 @@ import { AuthService } from './auth/auth.service';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,TrainingSevice],
   bootstrap: [AppComponent],
   entryComponents: [StopTrainingComponent]
 })
