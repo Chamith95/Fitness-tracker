@@ -17,6 +17,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Material
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -87,7 +88,8 @@ import { MatSortModule, MatPaginatorModule } from '@angular/material';
     MatSortModule,
     MatPaginatorModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [AuthService,TrainingSevice],
   bootstrap: [AppComponent],
