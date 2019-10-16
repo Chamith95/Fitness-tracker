@@ -6,7 +6,8 @@ import {Router} from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { TrainingSevice } from '../training/training.service';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../reducers/app.reducers'
+import * as fromRoot from '../reducers/ui.reducers'
+import * as Ui from '../actions/ui.actions'
 import { UiService } from '../shared/ui.service';
 
 
@@ -37,28 +38,31 @@ export class AuthService{
     }
 
     registerUser(authData: Authdata){
-        this.uiService.loadingStateChanged.next(true);
+        // this.uiService.loadingStateChanged.next(true);
+        this.store.dispatch(new Ui.StartLoading())
             this.afauth.auth.createUserWithEmailAndPassword(
                 authData.email,
                 authData.password).then(result=>{
-                    this.uiService.loadingStateChanged.next(false)
+                    // this.uiService.loadingStateChanged.next(false)
+                    this.store.dispatch(new Ui.StopLoading())
                 })
                 .catch(error=>{
-                    this.uiService.loadingStateChanged.next(false)
+                    this.store.dispatch(new Ui.StopLoading())
                     this.uiService.showSnackbar(error.message,null,3000)
                 });
 
     }
 
     login(authData:Authdata){
-        this.uiService.loadingStateChanged.next(true);
+        this.store.dispatch(new Ui.StartLoading())
         this.afauth.auth.signInWithEmailAndPassword(
             authData.email,
             authData.password).then(result=>{
+                this.store.dispatch(new Ui.StopLoading())
                 this.uiService.loadingStateChanged.next(false)
             })
             .catch(error=>{
-                this.uiService.loadingStateChanged.next(false)
+                this.store.dispatch(new Ui.StopLoading())
                 this.uiService.showSnackbar(error.message,null,3000)
             });
     }

@@ -8,7 +8,7 @@ import {
 import { environment } from '../../environments/environment';
 
 
-import * as fromApp from './app.reducers';
+import * as fromApp from './ui.reducers';
 
 export interface State {
   ui: fromApp.State;
@@ -20,3 +20,6 @@ export const reducers: ActionReducerMap<State> = {
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+export const getUiState=createFeatureSelector<fromApp.State>('ui');
+export const getIsLoading =createSelector(getUiState,fromApp.getIsLoading);

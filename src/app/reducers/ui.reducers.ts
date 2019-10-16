@@ -1,3 +1,7 @@
+
+
+import * as UIActions from '../actions/ui.actions';
+
 export interface State {
     isLoading:boolean;
 }
@@ -6,13 +10,13 @@ const initialState: State ={
     isLoading:false
 }
 
-export function appReducer(state =initialState,action){
+export function appReducer(state =initialState,action:UIActions.UIActions){
     switch(action.type){
-        case 'START_LOADING':
+        case UIActions.START_LOADING:
             return{
                 isLoading:true
             }
-        case 'STOP_LOADING':
+        case UIActions.STOP_LOADING:
             return{
                 isLoading:false
             }
@@ -20,3 +24,5 @@ export function appReducer(state =initialState,action){
             return state;
     }
 }
+
+export const getIsLoading =(state:State) => state.isLoading;
