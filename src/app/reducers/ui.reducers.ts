@@ -1,5 +1,3 @@
-
-
 import * as UIActions from '../actions/ui.actions';
 
 export interface State {
