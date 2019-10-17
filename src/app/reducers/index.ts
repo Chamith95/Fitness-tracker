@@ -8,18 +8,19 @@ import {
 import { environment } from '../../environments/environment';
 
 
-import * as fromApp from './ui.reducers';
+import * as fromUI from './ui.reducers';
 
 export interface State {
-  ui: fromApp.State;
+  ui: fromUI.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  ui: fromApp.appReducer,
+  ui: fromUI.appReducer,
 };
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
 
-export const getUiState=createFeatureSelector<fromApp.State>('ui');
-export const getIsLoading =createSelector(getUiState,fromApp.getIsLoading);
+
+export const getUiState = createFeatureSelector<fromUI.State>('ui');
+export const getIsLoading = createSelector(getUiState, fromUI.getIsLoading);

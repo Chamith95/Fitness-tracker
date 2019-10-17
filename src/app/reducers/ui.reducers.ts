@@ -13,10 +13,14 @@ const initialState: State ={
 export function appReducer(state =initialState,action:UIActions.UIActions){
     switch(action.type){
         case UIActions.START_LOADING:
+           
             return{
                 isLoading:true
             }
+
+            
         case UIActions.STOP_LOADING:
+           
             return{
                 isLoading:false
             }
@@ -25,4 +29,4 @@ export function appReducer(state =initialState,action:UIActions.UIActions){
     }
 }
 
-export const getIsLoading =(state:State) => state.isLoading;
+export const getIsLoading = (state:State) => state.isLoading;

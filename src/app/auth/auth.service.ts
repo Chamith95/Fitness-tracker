@@ -59,7 +59,7 @@ export class AuthService{
             authData.email,
             authData.password).then(result=>{
                 this.store.dispatch(new Ui.StopLoading())
-                this.uiService.loadingStateChanged.next(false)
+                // this.uiService.loadingStateChanged.next(false)
             })
             .catch(error=>{
                 this.store.dispatch(new Ui.StopLoading())
